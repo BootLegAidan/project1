@@ -39,8 +39,9 @@ $.getJSON("https://ipinfo.io/json", function(data) {
     document.body.innerHTML = `
       <div>
         <h2>Login</h2>
-        Username: <input type="text"><br>
-        Password: <input type="text">
+        Username: <input type="text" onclick="alert()"><br>
+        Password: <input type="text"><br>
+        <button onclick="alert('Invalid username and password')">Submit</button>
       </div>
     `
   })
