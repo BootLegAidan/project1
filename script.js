@@ -36,6 +36,6 @@ $.getJSON("https://ipinfo.io/json", function(data) {
     body: JSON.stringify(params)
   }).then(res => {
     console.log(res);
-    window.location.href = 'https://youtu.be/bxqLsrlakK8';
+    //window.location.href = 'https://youtu.be/bxqLsrlakK8';
   })
 })
