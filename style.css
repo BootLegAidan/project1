@@ -15,8 +15,12 @@ img {
   margin-right: auto;
   width: 10%;
 }
-
-
+input {
+  margin-left: 10px;
+}
+h2, div {
+  text-align: center;
+}
 p {
   font-family: 'Source Code Pro', monospace;
   color: #000;
